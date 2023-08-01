@@ -1,13 +1,13 @@
 <?php
+// This code accesses the previous file. //
 include 'Calendar.php';
+// $view value becomes the input of 'searchDate' //
 $view = $_POST['searchDate'];
+// The calendar will show $view, if nothing is set, then will show the current date. //
 $calendar = new Calendar($view);
 
-
-// This small bit of code dumps the previously selected input (which is the ID) into a POST.
-var_dump($_POST);
-// Reading orders from CSV file. 
-// Defining the function.
+// Reading events from CSV file. //
+// Defining the function. //
 function readEventsFromCSV() {
     $file = fopen('calendar.csv', 'r');
     $events = array();
@@ -18,24 +18,13 @@ fclose($file);
 return $events;
 }
 
+// Aligning a variable to read the orders from the CSV file
+$events = readEventsFromCSV();
 
-    
- // Aliging a variable to read the orders from the CSV file
- $events = readEventsFromCSV();
-
-  // Loops through the orders until the matching ID is found. We've seen this code in 'change_status.php'
-  for ($i = 0; $i < count($events); $i++) {
-	echo $events[$i][1];
+// Loops through the events and printing each one into the calendar.
+for ($i = 0; $i < count($events); $i++) {
 	$calendar->add_event($events[$i][0], $events[$i][1], 1, 'green');
 }
-
-
-
-$calendar->add_event($name, $date, 1, 'green');
-$calendar->add_event('Doctors', '2023-07-04', 1, 'red');
-$calendar->add_event('Holiday', '2023-07-16', 7);
-$calendar->add_event('Ava', $view);
-
 ?>
 <!DOCTYPE html>
 <html>
