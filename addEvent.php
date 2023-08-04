@@ -9,7 +9,7 @@
 <form action="submitEvent.php" method=post>
     <!-- The heading and two input boxes -->    
     <h2><b>Add an Event</b></h2>
-    Date: <input type='test' name='date'/><br>
+    Date: <input type='date' name='date' min='2000-01-01' max='2999-12-31'/><br>
     Name: <input type='test' name='name'/><br><br>
     <!-- Submit button that activates the next page -->
     <l><input type='submit' value='Confirm' style="background-color: white;

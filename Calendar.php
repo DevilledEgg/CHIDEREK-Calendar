@@ -8,6 +8,7 @@
 <body>
 <?php
 class Calendar {
+    
 
     // Private properties and methods can only be used by the class where they are defined. //
     // Outside code and derived classes cannot use them. //
@@ -80,19 +81,34 @@ class Calendar {
             }
             $html .= '</div>';
         }
+
+        $view = $_POST['searchDate'];
+
         // This is my own code. This part is a search button. //
         // Inputting a certain date will tell the calendar to show that particular date and its resepctive information. //
+        
         echo "<p><td>
         <form action='CHIDEREK.php' method='post'>
-            <input type='test' name='searchDate'/>
+            <input type='date' name='searchDate' value=$view min='2000-01-01' max='2999-12-31'>
             <input type='submit' value='Search'>
         </form>
         </td>";
+        
         // This part is a add event button. //
         // Any information that is filled by the user will go into the CSV and be printed onto the calendar. //
         echo "<td>
         <form action='addEvent.php' method='post'>
             <input type='submit' value='Add Event'>
+        </form>
+
+        <form action='addWorkday.php' method='post'>
+            <input type='submit' value='Add Workday'>
+        </form>
+        </td>";
+
+        echo "<td>
+        <form action='profiles.php' method='post'>
+            <input type='submit' value='Profiles'>
         </form>
         </td>";
         

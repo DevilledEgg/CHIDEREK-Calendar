@@ -61,7 +61,7 @@ foreach ($events as $event) {
     
     // Not completed yet. //
     echo "<td>
-    <form action='editOrders.php' method='post'>
+    <form action='CHIDEREK.php' method='post'>
         <input type='hidden' name='id' value='" . $event[2] . "'>
         <input type='submit' value = 'Edit'>
     </form>

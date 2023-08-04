@@ -63,6 +63,22 @@
 .calendar .days .day_num .event.red {
     background-color: #ce5151;
 }
+.calendar .days .day_num .event.orange {
+    background-color: #e4881e;
+}
+.calendar .days .day_num .event.purple {
+    background-color: #ae50ce;
+}
+.calendar .days .day_num .event.black {
+    background-color: #151515;
+}
+.calendar .days .day_num .event.grey {
+    background-color: #7d7c7b;
+}
+.calendar .days .day_num .event.pink {
+    background-color: #de3b6e;
+}
+
 .calendar .days .day_num:nth-child(7n+1) {
     border-left: 1px solid #e6e9ea;
 }
