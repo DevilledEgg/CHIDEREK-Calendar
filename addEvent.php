@@ -1,4 +1,34 @@
 <!DOCTYPE html>
+<style>
+a:link, a:visited {
+  text-decoration: blue;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
+}
+    * {
+    text-align: center;
+    }
+
+    div {
+        background-color:#ffffff;
+        padding-top: 5px;
+        padding-bottom: 10px;
+        padding-left: 25px;
+        padding-right: 5px;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        margin: 10px auto;
+        width: 30%;
+
+    }
+
+</style>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

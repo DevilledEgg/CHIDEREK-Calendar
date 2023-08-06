@@ -1,6 +1,12 @@
-Hector,Chimichanga,Doctor,Avaliable,1691022684
-Ngaakudzwe,Mazani,Student,"On Leave",1691022749
-Ava,Trewin,Plant,Sick,1691022814
-Travis,Scott,Influencer,Unavaliable,1691022828
-Ze,Stringer,Artist,Sick,1691113043
-Jackie,Watt,Nurse,Avaliable,1691148067
+Ngaakudzwe,Mazani,Student,"On Leave",yellow,1691022749,10:50,17:00,
+Ava,Trewin,Plant,Sick,green,1691022814,13:50,18:00,"Absolutely loves plants. Probably way too much."
+Travis,Scott,Influencer,Unavaliable,blue,1691022828,10:50,17:00,
+Ze,Stringer,Artist,Sick,pink,1691113043,06:50,17:00,
+Jackie,Watt,Nurse,Avaliable,orange,1691148067,10:50,17:00,
+Adaeze,Ikeh,Student,"On Leave",yellow,1691191171,10:50,17:00,
+Jack,Sparrow,Pirate,Avaliable,yellow,1691192892,11:50,17:00,
+Mimi,Chikelu,American,"On Leave",grey,1691193736,10:50,17:00,
+Diesel,Uppill,PlanetUni,Sick,pink,1691207898,09:50,17:00,"He is sick always :("
+Chioma,Ikeh,Manager,Avaliable,purple,1691309699,08:20,13:15,"my mother"
+Hailey,Albatros,"Music Freak",Unavaliable,blue,1691311732,08:40,15:20,Blueberry
+Wednesday,Addams,Arbalist,Avaliable,black,1691327156,23:05,05:05,"One normal night..."

@@ -1,23 +1,54 @@
+<style>
+    h1 {
+        display: block;
+        font-size: 2em;
+        margin-left: 0;
+        margin-right: 0;
+        font-weight: bold;
+    }
+    t {
+        display: block;
+        font-size: 1.3em;
+    }
+
+    div {
+        background-color:#ffffff;
+        padding-top: 5px;
+        padding-bottom: 10px;
+        padding-left: 25px;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        margin: 10px auto;
+        width: 60%;
+    }
+    
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto;
+    }
+    .grid-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 45px;
+        font-size: 30px;
+        text-align: center;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+</style>
+</div>
 <html>
     <head>
         <title>Profiles</title>
     </head>
     <body>
-        <h1>Employees</h1>
-        <!-- A table -->
-        <table>
-            
-            <!-- Table Heading -->
-            <tr> 
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Occupation</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
-
+        <h1>Current Employees</h1>
 
 <?php
+
 // Identifying the function with a variable. //
 $profiles = readProfilesFromCSV();
 
@@ -38,30 +69,51 @@ function readProfilesFromCSV() {
 fclose($file);
 return $profiles;
 }
+    
+    echo "<div class='grid-container'>";
+    echo '<p>';
+
+    
+//echo "<div class='grid-container'>
+//    <div class='grid-item'>1</div>
+//    <div class='grid-item'>2</div>
+//    <div class='grid-item'>3</div>  
+//    <div class='grid-item'>4</div>
+//    <div class='grid-item'>5</div>
+//    <div class='grid-item'>6</div>  
+//    <div class='grid-item'>7</div>
+//    <div class='grid-item'>8</div>
+//    <div class='grid-item'>9</div>  
+//    </div>";
 
 echo "
-    <form action='addProfile.php' method='post'>
+    <p><p><form action='addProfile.php' method='post'>
     <input type='submit' value = 'Add Profile'>
-</form><p>";
+</form>";
+
+echo "<form action='CHIDEREK.php' method='post'>
+    <input type='hidden' name='searchDate' value=$currentDate>
+    <input type='submit' value='Back to Calendar'>
+    </form>";
 
 // For each line of events, display it in the table and loop for all lines. //
 // $event is a variable that can be used for one specific cell. //
 foreach ($profiles as $profile) {   
     // Each data cell is put into the table in an allocated order. //
-    echo "<tr>";
-    echo "<td>" . $profile[0] . "</td>";
-    echo "<td>" . $profile[1] . "</td>";
-    echo "<td>" . $profile[2] . "</td>";
-    echo "<td>" . $profile[3] . "</td>";
+    echo "<p>";
+    echo "<form action='presentProfile.php' method='post'>
+            <input type='hidden' name='id' value=$profile[5]>
+            <input type='submit' value= '$profile[3]'>
+        </form>";
+    echo $profile[1] . ', ';
+    echo $profile[0];
+    echo ' - [' . $profile[2] . '] ';
+
+    
 }
 
 ?>
 </table>
 </body>
-<?php
-    echo "<p><form action='CHIDEREK.php' method='post'>
-    <input type='hidden' name='searchDate' value=$currentDate>
-    <input type='submit' value='Okay!'>
-    </form>";
-?>
+</div>
 </html>

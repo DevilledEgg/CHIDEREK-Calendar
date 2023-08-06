@@ -15,6 +15,10 @@
     $profileLastName = $_POST['lastName'];
     $job = $_POST['job'];
     $status = $_POST['status'];
+    $clockIn = $_POST['clockIn'];
+    $clockOut = $_POST['clockOut'];
+    $colour = $_POST['colour'];
+    $employeeInfo = $_POST['employeeInfo'];
 ?>
 
 <?php
@@ -23,7 +27,7 @@
     $profileID = time();
 
     // If the user has left any of the input fields empty, the profile will not be added. //
-    if(empty($profileFirstName) or empty($profileLastName) or empty($job) or empty($status)) {
+    if(empty($profileFirstName) or empty($profileLastName) or empty($job) or empty($status) or empty($clockIn) or empty($clockOut)) {
         echo "<p>Please fill out all input fields.</p>";
         ?>
         </div>
@@ -37,12 +41,15 @@
         // Outputs a message indicating the success. //
         echo "Done!";
         // This stores all the data that the user inputed into an array called $eventData.
-        $profileData = array($profileFirstName, $profileLastName, $job, $status, $profileID);
+        $profileData = array($profileFirstName, $profileLastName, $job, $status, $colour, $profileID, $clockIn, $clockOut, $employeeInfo);
+       
     }
+    
 
     // Function for writing array to CSV file. //
     // Remember they always come before the actual function. //
     writeEventDataToCSV($profileData);
+    
 
     // This code is writing the array to a CSV file to it can be read easily. //
     function writeEventDataToCSV($profileData) {
@@ -52,6 +59,8 @@
         // In this case, $eventData is going into calendar.csv //
         fputcsv($file, $profileData);
         fclose($file);
+        header("Location: profiles.php");
+        exit();
     }
 
 

@@ -67,18 +67,51 @@ input[type=submit]:hover {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Employee</title>
+    <title>Edit Employee</title>
 </head>
 <body>
+<?php
+
+function readProfilesFromCSV() {
+    $file = fopen('profiles.csv', 'r');
+    $profiles = array();
+    while (($data = fgetcsv($file)) !== false) {
+        $profiles[] = $data;
+    }
+fclose($file);
+return $profiles;
+}
+
+$profiles = readProfilesFromCSV();
+
+// Geting the profile ID from the submission
+$profile_id = $_POST['id'];
+
+// Finding the profile with the specific ID
+$profile_index = null;
+foreach($profiles as $i => $profile) {
+    if ($profile[5] == $profile_id) {
+        $profile_index = $i;
+        break;
+    }
+}
+
+if ($profile_index === null) {
+    echo "Profile not found";
+    exit;
+}
+
+
+?>
 <div class="container">
-<form action="submitProfile.php" method=post>
-<h2><b>Set up a Profile</b></h2>
+<form action="updateProfile.php" method=post>
+<h2><b>Editing <?php echo $profile[0]; echo ' '; echo $profile[1] ?></b></h2>
 <div class="row">
     <div class="col-25">
       <label for="fname">First Name</label>
     </div>
     <div class="col-75">
-      <input type="text" id="fname" name="firstName" placeholder="e.g. Shaun ">
+      <input type="text" id="fname" name="firstName" value="<?php echo $profile[0]; ?>">
     </div>
 </div>
 <div class="row">
@@ -86,7 +119,7 @@ input[type=submit]:hover {
       <label for="lname">Last Name</label>
     </div>
     <div class="col-75">
-      <input type="text" id="lname" name="lastName" placeholder="e.g. Nikola ">
+      <input type="text" id="lname" name="lastName" value="<?php echo $profile[1]; ?>">
     </div>
 </div>
 <div class="row">
@@ -94,7 +127,7 @@ input[type=submit]:hover {
       <label for="job">Occupation</label>
     </div>
     <div class="col-75">
-      <input type="text" id="job" name="job" placeholder="e.g. Doctor ">
+      <input type="text" id="job" name="job" value="<?php echo $profile[2]; ?>">
     </div>
 </div>
 <div class="row">
@@ -102,7 +135,8 @@ input[type=submit]:hover {
       <label for="status">Status</label>
     </div>
     <div class="col-75">
-      <select id="status" name="status">
+      <select id="status" name="status" value="Sick">
+            <option value = '<?php echo $profile[3]; ?>' " . ">Keep as <?php echo $profile[3]; ?></option>
             <option value = 'Avaliable' " . ">Avaliable</option>
             <option value = 'On Leave' " . ">On Leave</option>
             <option value = 'Sick' " . ">Sick</option>
@@ -115,7 +149,7 @@ input[type=submit]:hover {
       <label for="in">Clock In</label>
     </div>
     <div class="col-75">
-      <input type="time" id="clockIn" name="clockIn">
+      <input type="time" id="clockIn" name="clockIn" value="<?php echo $profile[6]; ?>">
     </div>
 </div>
 <div class="row">
@@ -123,7 +157,7 @@ input[type=submit]:hover {
       <label for="out">Clock Out</label>
     </div>
     <div class="col-75">
-      <input type="time" id="clockOut" name="clockOut">
+      <input type="time" id="clockOut" name="clockOut" value="<?php echo $profile[7]; ?>">
     </div>
 </div>
 <div class="row">
@@ -132,6 +166,7 @@ input[type=submit]:hover {
     </div>
     <div class="col-75">
       <select id="colour" name="colour">
+            <option value = "<?php echo $profile[4]; ?>" " . ">Keep as <?php echo $profile[4]; ?></option>
             <option value = 'red' " . ">Red</option>
             <option value = 'orange' " . ">Orange</option>
             <option value = 'yellow' " . ">Yellow</option>
@@ -146,10 +181,11 @@ input[type=submit]:hover {
 </div>
 <div class="row">
     <div class="col-25">
-      <label for="infomation">Extra Info <p><p><input type="submit" value="Submit"></label>
+      <label for="infomation">Extra Info <p><p><input type="submit" value="Submit Changes"></label>
     </div>
     <div class="col-75">
-      <input type="text" id="infomation" name="employeeInfo" placeholder="Write something...">
+      <input type="text" id="infomation" name="employeeInfo" value="<?php echo $profile[8]; ?>">,
+      <input type="hidden" name="id" value="<?php echo $profile[5]; ?>" />
     </div>
 </div>
 </form>
