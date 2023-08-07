@@ -111,7 +111,7 @@ if ($profile_index === null) {
       <label for="fname">First Name</label>
     </div>
     <div class="col-75">
-      <input type="text" id="fname" name="firstName" value="<?php echo $profile[0]; ?>">
+      <input type="text" id="fname" name="firstName" value="<?php echo $profile[0]; ?>" required>
     </div>
 </div>
 <div class="row">
@@ -119,7 +119,7 @@ if ($profile_index === null) {
       <label for="lname">Last Name</label>
     </div>
     <div class="col-75">
-      <input type="text" id="lname" name="lastName" value="<?php echo $profile[1]; ?>">
+      <input type="text" id="lname" name="lastName" value="<?php echo $profile[1]; ?>" required>
     </div>
 </div>
 <div class="row">
@@ -127,7 +127,7 @@ if ($profile_index === null) {
       <label for="job">Occupation</label>
     </div>
     <div class="col-75">
-      <input type="text" id="job" name="job" value="<?php echo $profile[2]; ?>">
+      <input type="text" id="job" name="job" value="<?php echo $profile[2]; ?>" required>
     </div>
 </div>
 <div class="row">
@@ -149,7 +149,7 @@ if ($profile_index === null) {
       <label for="in">Clock In</label>
     </div>
     <div class="col-75">
-      <input type="time" id="clockIn" name="clockIn" value="<?php echo $profile[6]; ?>">
+      <input type="time" id="clockIn" name="clockIn" value="<?php echo $profile[6]; ?>" required>
     </div>
 </div>
 <div class="row">
@@ -157,7 +157,7 @@ if ($profile_index === null) {
       <label for="out">Clock Out</label>
     </div>
     <div class="col-75">
-      <input type="time" id="clockOut" name="clockOut" value="<?php echo $profile[7]; ?>">
+      <input type="time" id="clockOut" name="clockOut" value="<?php echo $profile[7]; ?>" required>
     </div>
 </div>
 <div class="row">
