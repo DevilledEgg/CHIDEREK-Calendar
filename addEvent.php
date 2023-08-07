@@ -1,33 +1,68 @@
 <!DOCTYPE html>
 <style>
-a:link, a:visited {
-  text-decoration: blue;
+* {
+  box-sizing: border-box;
+  background-color: #f2f2f2
 }
 
-a:hover {
-  text-decoration: underline;
+input[type=text], select, textarea {
+  width: 80%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
 }
 
-a:active {
-  text-decoration: underline;
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
 }
-    * {
-    text-align: center;
-    }
 
-    div {
-        background-color:#ffffff;
-        padding-top: 5px;
-        padding-bottom: 10px;
-        padding-left: 25px;
-        padding-right: 5px;
-        border-radius: 10px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-        margin: 10px auto;
-        width: 30%;
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
-    }
+input[type=submit]:hover {
+  background-color: #45a049;
+}
 
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
 </style>
 <html lang="en">
 <head>
@@ -36,14 +71,38 @@ a:active {
     <title>Add Event</title>
 </head>
 <body>
-<form action="submitEvent.php" method=post>
-    <!-- The heading and two input boxes -->    
-    <h2><b>Add an Event</b></h2>
-    Date: <input type='date' name='date' min='2000-01-01' max='2999-12-31'/><br>
-    Name: <input type='test' name='name'/><br><br>
+<?php
+  
+?>
+<div class="container">
+<form action="submitEvent.php" method=post>    
+<h2><b>Add an Event</b></h2>
+<div class="row">
+    <div class="col-25">
+      <label for="fname">Name</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="name" name="name" placeholder="e.g. Public holiday" required>
+    </div>
+</div>
+<div class="row">
+    <div class="col-25">
+      <label for="fname">Date</label>
+    </div>
+    <div class="col-75">
+      <input type="date" id="date" name="date" min='2000-01-01' max='2999-12-31' required>
+    </div>
+</div>
     <!-- Submit button that activates the next page -->
-    <l><input type='submit' value='Confirm' style="background-color: white;
-      color: black; padding: 5px 20px; border-radius: 10px; text-align: center; display: inline-block; border: 2px solid green; "/></l>
+    <l><input type='submit' value='Confirm'/>
 </form>
+<?php
+  $currentDate = date("Y-m-d");
+  echo "<p><form action='CHIDEREK.php' method='post'>
+  <input type='hidden' name='searchDate' value=$currentDate>
+  <input type='submit' value='Cancel' style='background-color: grey'>
+  </form>";
+
+?>
 </body>
 </html>

@@ -23,7 +23,7 @@ $events = readEventsFromCSV();
 
 // Loops through the events and printing each one into the calendar.
 for ($i = 0; $i < count($events); $i++) {
-	$calendar->add_event($events[$i][0], $events[$i][1], 1, 'green');
+	$calendar->add_event($events[$i][0], $events[$i][1], 1, 'grey');
 }
 
 function readWorkDayFromCSV() {
@@ -36,10 +36,11 @@ fclose($file);
 return $workdays;
 }
 
+
 $workdays = readWorkDayFromCSV();
 
 for ($i = 0; $i < count($workdays); $i++) {
-	$calendar->add_event($workdays[$i][0], $workdays[$i][1], 1, 'yellow');
+	$calendar->add_event($workdays[$i][0] . ' [' . $workdays[$i][3] . ']', $workdays[$i][2], 1, $workdays[$i][5]);
 }
 
 ?>

@@ -1,4 +1,42 @@
 <!DOCTYPE html>
+<style>
+    h1 {
+        display: block;
+        font-size: 2em;
+        margin-left: 0;
+        margin-right: 0;
+        font-weight: bold;
+    }
+    t {
+        display: block;
+        font-size: 1.3em;
+    }
+
+    div {
+        background-color:#ffffff;
+        padding-top: 50px;
+        padding-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        margin: 100px auto;
+        width: 60%;
+        text-align: center;
+    }
+
+    input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+</style>
 
 <html lang="en">
 <head>
@@ -29,10 +67,12 @@
     // If the user has left any of the input fields empty, the profile will not be added. //
     if(empty($profileFirstName) or empty($profileLastName) or empty($job) or empty($status) or empty($clockIn) or empty($clockOut)) {
         echo "<p>Please fill out all input fields.</p>";
-        ?>
-        </div>
-        <p><b><a href="profiles.php" target="_self">Back</a></b></p>
-        <?php
+        echo "<form action='addprofile.php' method='post'>
+        <input type='submit' value='Try Again'>
+        </form>";
+        echo "<p><form action='profiles.php' method='post'>
+        <input type='submit' value='Cancel' style='background-color: grey'>
+        </form>";
         echo "</body>";
         echo "</html>";
         exit;        

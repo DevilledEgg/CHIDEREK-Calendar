@@ -174,7 +174,6 @@ if ($profile_index === null) {
             <option value = 'blue' " . ">Blue</option>
             <option value = 'purple' " . ">Purple</option>
             <option value = 'pink' " . ">Pink</option>
-            <option value = 'grey' " . ">Grey</option>
             <option value = 'black' " . ">Black</option>
       </select>
     </div>

@@ -72,10 +72,10 @@
                  </form><p>';
             echo '<form action="deleteProfile.php" method=post>
                  <input type="hidden" name="id" value= ' . $profiles[$i][5] . '>
-                 <input type="submit" value="Delete">
+                 <input type="submit" value="Delete" style="background-color: red">
               </form><p>';
             echo '<form action="profiles.php" method=post>
-                    <input type="submit" value="Back">
+                    <input type="submit" value="Back" style="background-color: grey">
                  </form>';
         }
     }

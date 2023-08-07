@@ -68,6 +68,7 @@ class Calendar {
     private $active_year, $active_month, $active_day;
     private $events = [];
     
+    
     // This function finds the current year, month and day from the devices own calendar and stores it into these variables. //
     public function __construct($date = null) {
         // $this is a reserved keyword. It usually refers to the object to which the method belongs. //
@@ -151,11 +152,16 @@ class Calendar {
 
         // This is my own code. This part is a search button. //
         // Inputting a certain date will tell the calendar to show that particular date and its resepctive information. //
-        
         echo "<p><td>
         <form action='CHIDEREK.php' method='post'>
-            <input type='date' name='searchDate' value=$view min='2000-01-01' max='2999-12-31'>
+            <input type='date' name='searchDate' value=$view min='2000-01-01' max='2999-12-31' required>
             <input type='submit' value='Search'>
+        </form>
+        </td>";
+        echo "<p><td>
+        <form action='presentDay.php' method='post'>
+            <input type='date' name='presentDate' min='2000-01-01' max='2999-12-31' required>
+            <input type='submit' value='Expand'>
         </form>
         </td>";
         

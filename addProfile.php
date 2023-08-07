@@ -78,7 +78,7 @@ input[type=submit]:hover {
       <label for="fname">First Name</label>
     </div>
     <div class="col-75">
-      <input type="text" id="fname" name="firstName" placeholder="e.g. Shaun ">
+      <input type="text" id="fname" name="firstName" placeholder="e.g. Shaun" required>
     </div>
 </div>
 <div class="row">
@@ -86,7 +86,7 @@ input[type=submit]:hover {
       <label for="lname">Last Name</label>
     </div>
     <div class="col-75">
-      <input type="text" id="lname" name="lastName" placeholder="e.g. Nikola ">
+      <input type="text" id="lname" name="lastName" placeholder="e.g. Nikola" required>
     </div>
 </div>
 <div class="row">
@@ -94,7 +94,7 @@ input[type=submit]:hover {
       <label for="job">Occupation</label>
     </div>
     <div class="col-75">
-      <input type="text" id="job" name="job" placeholder="e.g. Doctor ">
+      <input type="text" id="job" name="job" placeholder="e.g. Doctor" required>
     </div>
 </div>
 <div class="row">
@@ -115,7 +115,7 @@ input[type=submit]:hover {
       <label for="in">Clock In</label>
     </div>
     <div class="col-75">
-      <input type="time" id="clockIn" name="clockIn">
+      <input type="time" id="clockIn" name="clockIn" required>
     </div>
 </div>
 <div class="row">
@@ -123,7 +123,7 @@ input[type=submit]:hover {
       <label for="out">Clock Out</label>
     </div>
     <div class="col-75">
-      <input type="time" id="clockOut" name="clockOut">
+      <input type="time" id="clockOut" name="clockOut" required>
     </div>
 </div>
 <div class="row">
@@ -139,7 +139,6 @@ input[type=submit]:hover {
             <option value = 'blue' " . ">Blue</option>
             <option value = 'purple' " . ">Purple</option>
             <option value = 'pink' " . ">Pink</option>
-            <option value = 'grey' " . ">Grey</option>
             <option value = 'black' " . ">Black</option>
       </select>
     </div>
@@ -154,7 +153,7 @@ input[type=submit]:hover {
 </div>
 </form>
 <form action="profiles.php" method=post>
-    <input class="cancel" type="submit" value="Cancel">
+    <input class="cancel" type="submit" value="Cancel" style="background-color: grey"/>
 </form>
 </div>
 </body>

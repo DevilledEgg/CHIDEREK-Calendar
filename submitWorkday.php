@@ -10,9 +10,65 @@
 <body>
 <div>
 <?php
+
+    // Prings employee information from last page //
+    function readProfilesFromCSV() {
+        $file = fopen('profiles.csv', 'r');
+        $profiles = array();
+        while (($data = fgetcsv($file)) !== false) {
+            $profiles[] = $data;
+        }
+    fclose($file);
+    return $profiles;
+    }
+    
+    $profiles = readProfilesFromCSV();
+
+
     // This section gives the user inputs a home in some accurately named variables. //
-    $employee = $_POST['employee'];
+    
+    for ($i = 0; $i <count($profiles); $i++) {
+        if ($profiles[$i][5] == $_POST['employeeID']) {
+            $employee = $profiles[$i][0];
+        }
+    }
+
+    for ($i = 0; $i <count($profiles); $i++) {
+        if ($profiles[$i][5] == $_POST['employeeID']) {
+            $tag = $profiles[$i][4];
+        }
+    }
+
+    for ($i = 0; $i <count($profiles); $i++) {
+        if ($profiles[$i][5] == $_POST['employeeID']) {
+            $lastName = $profiles[$i][1];
+        }
+    }
+
+    for ($i = 0; $i <count($profiles); $i++) {
+        if ($profiles[$i][5] == $_POST['employeeID']) {
+            $job = $profiles[$i][2];
+        }
+    }
+
     $date = $_POST['date'];
+    $clockIn = $_POST['clockIn'];
+    $clockOut = $_POST['clockOut'];
+    if ($clockIn == null) {
+        for ($i = 0; $i <count($profiles); $i++) {
+            if ($profiles[$i][5] == $_POST['employeeID']) {
+                $clockIn = $profiles[$i][6];
+            }
+        }
+    }
+    if ($clockOut == null) {
+        for ($i = 0; $i <count($profiles); $i++) {
+            if ($profiles[$i][5] == $_POST['employeeID']) {
+                $clockOut = $profiles[$i][7];
+            }
+        }
+    }
+    
     $currentDate = date("Y-m-d");
 ?>
 
@@ -23,7 +79,7 @@
 
     // If the user has left any of the input fields empty, the profile will not be added. //
     if(empty($employee) or empty($date)) {
-        echo "<p>Please fill out all input fields.</p>";
+        echo "<p>Please fill out a name and a date.</p>";
         ?>
         </div>
         <p><b><a href="CHIDEREK.php" target="_self">Back</a></b></p>
@@ -36,7 +92,7 @@
         // Outputs a message indicating the success. //
         echo "Done!";
         // This stores all the data that the user inputed into an array called $eventData.
-        $workDayData = array($employee, $date, $workDayID);
+        $workDayData = array($employee, $lastName, $date, $job, $workDayID, $tag, $clockIn, $clockOut);
     }
 
     // Function for writing array to CSV file. //
@@ -51,6 +107,8 @@
         // In this case, $eventData is going into calendar.csv //
         fputcsv($file, $workDayData);
         fclose($file);
+        header("Location: profiles.php");
+        exit();
     }
 
 

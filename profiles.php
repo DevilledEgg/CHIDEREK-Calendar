@@ -98,6 +98,7 @@ echo "<form action='CHIDEREK.php' method='post'>
 
 // For each line of events, display it in the table and loop for all lines. //
 // $event is a variable that can be used for one specific cell. //
+
 foreach ($profiles as $profile) {   
     // Each data cell is put into the table in an allocated order. //
     echo "<p>";

@@ -1,4 +1,68 @@
 <!DOCTYPE html>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 80%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+</style>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -31,21 +95,53 @@ return $profiles;
 <form action='submitWorkday.php' method=post>
     <!-- The heading and two input boxes -->    
     <h2><b>Set up an Employee Workday</b></h2>
-    Employee:
-        <select name = 'employee'> 
+<div class="row">
+    <div class="col-25">
+      <label for="status">Employee:</label>
+    </div>
+    <div class="col-75">
+      <select id="employeeID" name="employeeID" required>
         <?php
-            foreach ($profiles as $profile) {   
-                echo "<option value = '$profile[0]' " . ">$profile[0] $profile[1]</option>";
+            foreach ($profiles as $profile) {  
+                if ($profile[3] == 'Avaliable') {
+                    echo "<option value = '$profile[5]' " . ">$profile[0] $profile[1]</option>";
+                }
             }
         ?>
-        </select><br>
-        
-        Date: <input type='date' name='date' min='2000-01-01' max='2999-12-31'/><br>
-
+      </select>
+    </div>
+</div>
+<div class="row">
+    <div class="col-25">
+      <label for="job">Date:</label>
+    </div>
+    <div class="col-75">
+      <input type="date" id="date" name="date" min='2000-01-01' max='2999-12-31' required>
+    </div>
+</div>
+<div class="row">
+    <div class="col-25">
+      <label for="in">Clock In</label>
+    </div>
+    <div class="col-75">
+      <input type="time" id="clockIn" name="clockIn">
+    </div>
+</div>
+<div class="row">
+    <div class="col-25">
+      <label for="in">Clock Out</label>
+    </div>
+    <div class="col-75">
+      <input type="time" id="clockOut" name="clockOut">
+    </div>
+</div>
+<i>Leaving Clock In and Clock Out blank will use the employees set regular hours.
 
     <!-- Submit button that activates the next page -->
-    <l><input type='submit' value='Confirm' style="background-color: white;
-      color: black; padding: 5px 20px; border-radius: 10px; text-align: center; display: inline-block; border: 2px solid green; "/></l>
+    <p><input type='submit' value='Confirm' />
+</form>
+<form action="profiles.php" method=post>
+    <input class="cancel" type="submit" value="Cancel" style="background-color: grey"/>
 </form>
 </body>
 </html>
